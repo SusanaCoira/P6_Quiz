@@ -54,6 +54,7 @@ router.get('/author', (req, res, next) => {
 
 // Autoload for routes using :quizId
 router.param('quizId', quizController.load);
+<<<<<<< HEAD
 router.param('userId', userController.load);
 router.param('tipId',  tipController.load);
 
@@ -91,6 +92,13 @@ router.delete('/users/:userId(\\d+)',
 router.get('/users/:userId(\\d+)/quizzes',
     sessionController.loginRequired,
     quizController.index);
+=======
+// Routes for the randomPlay
+router.get('/quizzes/randomplay',                   quizController.randomPlay);
+router.get('/quizzes/randomcheck/:quizID(\\d+)',    quizController.randomCheck);
+
+
+>>>>>>> practica6
 
 
 // Routes for the resource /quizzes
@@ -121,6 +129,7 @@ router.get('/quizzes/:quizId(\\d+)/play',  quizController.play);
 router.get('/quizzes/:quizId(\\d+)/check', quizController.check);
 
 
+<<<<<<< HEAD
 
 router.post('/quizzes/:quizId(\\d+)/tips',
     sessionController.loginRequired,
@@ -136,3 +145,6 @@ router.delete('/quizzes/:quizId(\\d+)/tips/:tipId(\\d+)',
 
 
 module.exports = router;
+=======
+module.exports = router;
+>>>>>>> practica6
