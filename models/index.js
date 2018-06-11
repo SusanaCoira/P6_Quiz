@@ -37,10 +37,9 @@ quiz.hasMany(tip);
 user.hasMany(quiz, {foreignKey: 'authorId'});
 quiz.belongsTo(user, {as: 'author', foreignKey: 'authorId'});
 
-User.hasMany(Tip, {foreignKey: 'AuthorId'});
-Tip.belongsTo(User, {as: 'Author', foreignKey: 'AuthorId'});
+// Relation 1-to-N betweet User and Tip:
+user.hasMany(tip, {foreignKey: 'authorId'});
+tip.belongsTo(user, {as: 'author', foreignKey: 'authorId'});
 
-exports.Quiz = Quiz; // exportar definición de tabla Quiz
-exports.Tip = Tip;   // exportar definición de tabla Tips
-exports.User = User; // exportar definición de tabla Users
+
 module.exports = sequelize;

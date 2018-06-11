@@ -9,7 +9,12 @@ exports.load = (req, res, next, quizId) => {
 
     models.quiz.findById(quizId, {
         include: [
-            models.tip,
+            {
+                model: models.tip,
+                include: [
+                    {model: models.user, as: 'author'}
+                ]
+            },
             {model: models.user, as: 'author'}
         ]
     })
@@ -24,7 +29,7 @@ exports.load = (req, res, next, quizId) => {
     .catch(error => next(error));
 };
 
-<<<<<<< HEAD
+
 
 // MW that allows actions only if the user logged in is admin or is the author of the quiz.
 exports.adminOrAuthorRequired = (req, res, next) => {
@@ -41,8 +46,7 @@ exports.adminOrAuthorRequired = (req, res, next) => {
 };
 
 
-=======
->>>>>>> practica6
+
 // GET /quizzes
 exports.index = (req, res, next) => {
 
